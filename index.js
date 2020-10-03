@@ -25,12 +25,12 @@ server.get("/api/posts", (req, res) => {
 	const posts = data
 		.find()
 		.then((response) => {
-			if (response) {
-				res.status(200).json(response);
-			} else {
+			if (response === []) {
 				res.status(500).json({
 					error: "The posts information could not be retrieved.",
 				});
+			} else {
+				res.status(200).json(response);
 			}
 		})
 		.catch((error) => {
@@ -168,7 +168,8 @@ server.put("/api/posts/:id/", (req, res) => {
 		data
 			.update(id, req.body)
 			.then((response) => {
-				res.status(200).json(req.body);
+                console.log(req.body)
+                //res.status(200).json(req.body);
 			})
 
 			.catch((error) => {
