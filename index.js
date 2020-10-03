@@ -80,22 +80,23 @@ server.get("/api/posts/:id", (req, res) => {
 // return the following JSON object: { error: "The comments information could not be retrieved." }.
 
 server.get("/api/posts/:id/comments", (req, res) => {
-	const comment = data
-		.findById(req.params.id)
-		.then((response) => {
-			if (comment) {
-				res.status(200).json(response);
-			} else {
-				res.status(404).json({
-					message: "The post with the specified ID does not exist.",
-				});
-			}
-		})
-		.catch((error) => {
-			res.status(500).json({
-				error: "The comments information could not be retrieved.",
-			});
+	const comment = data.findById(req.params.id);
+	if (!comment) {
+		res.status(404).json({
+			message: "The post with the specified ID does not exist.",
 		});
+	} else {
+		data
+			.findPostComments(req.params.id)
+			.then((response) => {
+				res.status(200).json(response);
+			})
+			.catch((error) => {
+				res.status(500).json({
+					error: "The comments information could not be retrieved.",
+				});
+			});
+	}
 });
 
 // When the client makes a DELETE request to / api / posts /: id:
