@@ -1,87 +1,78 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import silhoutte from "../Styles/silhoutte.png";
+import sil from "../Styles/silhoutte.png";
 import eye from "../Styles/eye.jpg";
+import Frodo from "../Styles/frodo.png";
+import Arwen from "../Styles/arwen.jpg";
 import { useStyles } from "../Styles/Style";
-
 function Quotes(props) {
-	const [image, setImage] = useState();
-	const [classImage, setClassImage] = useState();
 	const classes = useStyles();
-
-	const whoSaidIt = (name) => {
-		setImage(name);
-		if (image === name) {
-			setClassImage(image);
-		} else {
-			setClassImage(eye);
-		}
-	};
-
+    const [image, setImage] = useState(sil);
+	const quoteImage = props.quote.map((image) => {
+		return image
+    });
+	const whoSaidIt = (name, filmQuote) => {
+        quoteImage[filmQuote.id] = name
+		 if (quoteImage[filmQuote.id] === filmQuote.contents) {
+		 	setImage(name);
+		 } else {
+		 	setImage(eye);
+         }
+    };
 	return (
 		<Grid container className={classes.quoteContainer}>
 			<Grid item className={classes.quoteItem}>
 				{props.quote.map((filmQuote) => (
 					<Grid item className={classes.filmQuoteContainer}>
 						<Grid item className={classes.quoteImageSil}>
-							<img
-								className={
-									image === filmQuote.contents
-										? `classes.${classImage}`
-										: classes.sil
-								}
-								src={silhoutte}
-								alt="Who Said It?"
-							/>
+							<img className={classes.eye} src={image} alt="Who Said It?" />
 						</Grid>
 						<Grid item className={classes.filmQuoteItem}>
 							<Typography className={classes.quote}>
 								{filmQuote.title}
 							</Typography>
-
 							<Grid item className={classes.buttonGrid}>
 								<Button
 									variant="contained"
 									className={classes.button}
-									value="Frodo"
+									onClick={() => whoSaidIt("Frodo", filmQuote)}
 								>
 									<Typography>Frodo</Typography>
 								</Button>
 								<Button
 									variant="contained"
 									className={classes.button}
-									value="Samwise"
+									onClick={() => whoSaidIt("Samwise", filmQuote)}
 								>
 									<Typography>Samwise</Typography>
 								</Button>
 								<Button
 									variant="contained"
 									className={classes.button}
-									value="Gimli"
+									onClick={() => whoSaidIt("Gimli", filmQuote)}
 								>
 									<Typography>Gimli</Typography>
 								</Button>
 								<Button
 									variant="contained"
 									className={classes.button}
-									value="Gandalf"
+									onClick={() => whoSaidIt("Gandalf", filmQuote)}
 								>
 									<Typography>Gandalf</Typography>
 								</Button>
 								<Button
 									variant="contained"
 									className={classes.button}
-									value="Aragorn"
+									onClick={() => whoSaidIt("Aragorn", filmQuote)}
 								>
 									<Typography>Aragorn</Typography>
 								</Button>
 								<Button
 									variant="contained"
 									className={classes.button}
-									value="Arwen"
-									onClick={() => whoSaidIt("Arwen")}
+									onClick={() => whoSaidIt("Arwen", filmQuote)}
 								>
 									<Typography>Arwen</Typography>
 								</Button>

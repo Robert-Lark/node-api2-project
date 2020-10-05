@@ -40,11 +40,12 @@ export const useStyles = makeStyles((theme) => ({
 		maxHeight: "100%",
 	},
 	eye: {
-		backgroundImage: `url(${eye})`,
-		backgroundSize: "cover",
+		// backgroundImage: `url(${eye})`,
+		// backgroundSize: "cover",
 		borderRadius: "200px",
 		maxWidth: "100%",
-		maxHeight: "100%",
+        maxHeight: "100%",
+        border: "2px solid black",
 	},
 	Gandalf: {
 		backgroundImage: `url(${eye})`,
