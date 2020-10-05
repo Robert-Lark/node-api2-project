@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import silhoutte from './silhoutte.png'
+import frodo from "./frodo.png";
+import eye from "./eye.jpg";
 export const useStyles = makeStyles((theme) => ({
 	quoteContainer: {
 		display: "flex",
@@ -31,6 +33,57 @@ export const useStyles = makeStyles((theme) => ({
 		padding: "2%",
 	},
 	sil: {
+		backgroundImage: `url(${silhoutte})`,
+		backgroundSize: "cover",
+		borderRadius: "200px",
+		maxWidth: "100%",
+		maxHeight: "100%",
+	},
+	eye: {
+		backgroundImage: `url(${eye})`,
+		backgroundSize: "cover",
+		borderRadius: "200px",
+		maxWidth: "100%",
+		maxHeight: "100%",
+	},
+	Gandalf: {
+		backgroundImage: `url(${eye})`,
+		backgroundSize: "cover",
+		borderRadius: "200px",
+		maxWidth: "100%",
+		maxHeight: "100%",
+	},
+	Arwen: {
+		backgroundImage: `url(${eye})`,
+		backgroundSize: "cover",
+		borderRadius: "200px",
+		maxWidth: "100%",
+		maxHeight: "100%",
+	},
+	Samwise: {
+		backgroundImage: `url(${eye})`,
+		backgroundSize: "cover",
+		borderRadius: "200px",
+		maxWidth: "100%",
+		maxHeight: "100%",
+	},
+	Frodo: {
+		backgroundImage: `url(${frodo})`,
+		backgroundSize: "cover",
+		borderRadius: "200px",
+		maxWidth: "100%",
+		maxHeight: "100%",
+	},
+	Gimli: {
+		backgroundImage: `url(${eye})`,
+		backgroundSize: "cover",
+		borderRadius: "200px",
+		maxWidth: "100%",
+		maxHeight: "100%",
+	},
+	Aragorn: {
+		backgroundImage: `url(${eye})`,
+		backgroundSize: "cover",
 		borderRadius: "200px",
 		maxWidth: "100%",
 		maxHeight: "100%",
